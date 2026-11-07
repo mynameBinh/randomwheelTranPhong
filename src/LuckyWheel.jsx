@@ -22,9 +22,9 @@ const PRIZES = [150, 50, 100, 50, 150, 50, 100, 150, 200, 50, 100, 50];
 // Mệnh giá có nhiều ô (như 50K) vẫn giữ đúng tỉ lệ này vì ô được chọn ngẫu nhiên trong cùng mệnh giá
 const RATES = {
   50: 30,
-  100: 25,
-  150: 25,
-  200: 20,
+  100: 30,
+  150: 30,
+  200: 10,
 };
 
 const COLORS = {
