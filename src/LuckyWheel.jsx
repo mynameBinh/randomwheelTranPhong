@@ -602,7 +602,7 @@ export default function LuckyWheel() {
                 <div className={"amt" + (label(result).length > 5 ? " small" : "")} style={SPECIAL_COLORS[result] ? { color: SPECIAL_COLORS[result].accent } : undefined}>
                   {label(result)}
                 </div>
-                <p>Xuất trình tại tại các chi nhánh TRẦN PHONG LAPTOP</p>
+                <p>😍Chúc mừng - chúc mừng😍</p>
                 <button onClick={() => setResult(null)}>Đóng</button>
               </div>
             </div>
