@@ -24,13 +24,13 @@ const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "500K", 100, 200, 100, "1 tri
 // Khóa phải trùng với giá trị trong PRIZES (số 50 -> 50, chữ "Loa" -> "Loa")
 // Giải có nhiều ô (như 50K) vẫn giữ đúng tỉ lệ này vì ô được chọn ngẫu nhiên trong cùng giải
 const RATES = {
-  50: 50,
-  100: 50,
-  150: 350,
-  200: 50,
-  "500K": 50,
-  "1 triệu": 50,
-  "Loa": 50,
+  50: 20,
+  100: 35,
+  150: 35,
+  200: 10,
+  "500K": 0,
+  "1 triệu": 0,
+  "Loa": 40,
 };
 
 const COLORS = {
