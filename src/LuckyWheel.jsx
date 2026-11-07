@@ -24,13 +24,13 @@ const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "500K", 100, 200, 100, "1 tri
 // Khóa phải trùng với giá trị trong PRIZES (số 50 -> 50, chữ "Loa" -> "Loa")
 // Giải có nhiều ô (như 50K) vẫn giữ đúng tỉ lệ này vì ô được chọn ngẫu nhiên trong cùng giải
 const RATES = {
-  50: 20,
+  50: 35,
   100: 35,
-  150: 35,
+  150: 25,
   200: 7,
   "500K": 0,
   "1 triệu": 0,
-  "Loa": 40,
+  "Loa": 30
 };
 
 const COLORS = {
@@ -597,7 +597,7 @@ export default function LuckyWheel() {
           {result !== null && (
             <div className="overlay" onClick={() => setResult(null)}>
               <div className="modal" onClick={(e) => e.stopPropagation()}>
-                <h2>🎉 Chúc mừng bạn!</h2>
+                <h2>🎉 Chúc mừng bạn!</h2> 
                 <p>{isSpeaker(result) ? "Bạn đã quay trúng" : "Bạn đã quay trúng voucher giảm giá"}</p>
                 <div className={"amt" + (label(result).length > 5 ? " small" : "")} style={SPECIAL_COLORS[result] ? { color: SPECIAL_COLORS[result].accent } : undefined}>
                   {label(result)}
