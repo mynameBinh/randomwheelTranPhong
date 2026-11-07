@@ -10,7 +10,7 @@ const CONFIG = {
   title2: "CHI NHÁNH 4",
   date: "06/11 - 30/11",
   address: "236 NGUYÊN THÁI HỌC, QUY NHƠN, GIA LAI",
-  voucherText: "200K",
+  voucherText: "1 TRIỆU",
   spinSeconds: 9, // thời gian quay (giây) – càng lớn càng hồi hộp
   extraTurns: 10, // số vòng quay thêm
 };
