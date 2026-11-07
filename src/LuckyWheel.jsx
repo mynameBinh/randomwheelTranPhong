@@ -385,7 +385,7 @@ export default function LuckyWheel() {
 
           {/* logo */}
           <div className="abs logo">
-            <img src={"/src/logo.png"} alt={CONFIG.brand} />
+            <img src={"./src/logo.png"} alt={CONFIG.brand} />
           </div>
 
           {/* biển OPEN */}
