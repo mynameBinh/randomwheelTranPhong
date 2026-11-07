@@ -11,8 +11,8 @@ const CONFIG = {
   date: "06/11 - 30/11",
   address: "236 NGUYÊN THÁI HỌC, QUY NHƠN, GIA LAI",
   voucherText: "1 TRIỆU",
-  spinSeconds: 9, // thời gian quay (giây) – càng lớn càng hồi hộp
-  extraTurns: 10, // số vòng quay thêm
+  spinSeconds: 11, // thời gian quay (giây) – càng lớn càng hồi hộp
+  extraTurns: 13, // số vòng quay thêm
 };
 
 // Thứ tự ô: bắt đầu từ trên cùng, theo chiều kim đồng hồ (đơn vị: nghìn đồng)
@@ -24,13 +24,13 @@ const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "500K", 100, 200, 100, "1 tri
 // Khóa phải trùng với giá trị trong PRIZES (số 50 -> 50, chữ "Loa" -> "Loa")
 // Giải có nhiều ô (như 50K) vẫn giữ đúng tỉ lệ này vì ô được chọn ngẫu nhiên trong cùng giải
 const RATES = {
-  50: 20,
-  100: 35,
-  150: 35,
-  200: 10,
-  "500K": 0,
+  50: 0,
+  100: 0,
+  150: 0,
+  200: 0,
+  "500K": 100,
   "1 triệu": 0,
-  "Loa": 45,
+  "Loa": 0,
 };
 
 const COLORS = {
@@ -562,7 +562,7 @@ export default function LuckyWheel() {
           </svg>
 
           <div className="abs voucher">
-            <small>VOUCHER</small>
+            <small>LÊN ĐẾN</small>
             <span>{CONFIG.voucherText}</span>
           </div>
 
