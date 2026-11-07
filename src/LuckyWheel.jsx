@@ -16,7 +16,7 @@ const CONFIG = {
 };
 
 // Thứ tự ô: bắt đầu từ trên cùng, theo chiều kim đồng hồ (đơn vị: nghìn đồng)
-const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "500K", 100, "1 triệu", 100, 200];
+const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "500K", 100, 200, 100, "1 triệu"];
 // Số  -> hiển thị thêm chữ K (150 -> "150K")
 // Chữ -> hiển thị đúng như viết ("500K", "1 triệu", "Loa")
 
@@ -30,7 +30,7 @@ const RATES = {
   200: 10,
   "500K": 0,
   "1 triệu": 0,
-  "Loa": 40,
+  "Loa": 45,
 };
 
 const COLORS = {
