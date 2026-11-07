@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import logoImg from "./logo.png"; // logo.png nằm cùng thư mục src/
 
 /* =====================================================
    CẤU HÌNH – sửa ở đây cho nhanh
@@ -385,7 +386,7 @@ export default function LuckyWheel() {
 
           {/* logo */}
           <div className="abs logo">
-            <img src={"./src/logo.png"} alt={CONFIG.brand} />
+            <img src={logoImg} alt={CONFIG.brand} />
           </div>
 
           {/* biển OPEN */}
