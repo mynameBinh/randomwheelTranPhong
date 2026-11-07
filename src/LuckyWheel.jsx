@@ -16,7 +16,7 @@ const CONFIG = {
 };
 
 // Thứ tự ô: bắt đầu từ trên cùng, theo chiều kim đồng hồ (đơn vị: nghìn đồng)
-const PRIZES = [150, 100, 50, "Loa", 150, 200, 50, "500K", 200, "1 triệu", 100, 100];
+const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "500K", 100, "1 triệu", 100, 200];
 // Số  -> hiển thị thêm chữ K (150 -> "150K")
 // Chữ -> hiển thị đúng như viết ("500K", "1 triệu", "Loa")
 
@@ -24,13 +24,13 @@ const PRIZES = [150, 100, 50, "Loa", 150, 200, 50, "500K", 200, "1 triệu", 100
 // Khóa phải trùng với giá trị trong PRIZES (số 50 -> 50, chữ "Loa" -> "Loa")
 // Giải có nhiều ô (như 50K) vẫn giữ đúng tỉ lệ này vì ô được chọn ngẫu nhiên trong cùng giải
 const RATES = {
-  50: 30,
-  100: 30,
-  150: 30,
+  50: 20,
+  100: 35,
+  150: 35,
   200: 10,
   "500K": 0,
   "1 triệu": 0,
-  "Loa": 0,
+  "Loa": 40,
 };
 
 const COLORS = {
