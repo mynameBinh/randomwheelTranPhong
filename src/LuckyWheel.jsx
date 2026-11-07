@@ -8,7 +8,7 @@ const CONFIG = {
   brand: "TRẦN PHONG",
   title1: "KHAI TRƯƠNG",
   title2: "CHI NHÁNH 4",
-  date: "06/11/2026",
+  date: "06/11 - 30/11",
   address: "236 NGUYÊN THÁI HỌC, QUY NHƠN, GIA LAI",
   voucherText: "200K",
   spinSeconds: 9, // thời gian quay (giây) – càng lớn càng hồi hộp
