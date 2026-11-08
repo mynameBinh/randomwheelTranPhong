@@ -10,27 +10,26 @@ const CONFIG = {
   title2: "CHI NHÁNH 4",
   date: "06/11 - 30/11",
   address: "236 NGUYÊN THÁI HỌC, QUY NHƠN, GIA LAI",
-  voucherText: "1 TRIỆU",
-  spinSeconds: 11, // thời gian quay (giây) – càng lớn càng hồi hộp
-  extraTurns: 13, // số vòng quay thêm
+  voucherText: "300K",
+  spinSeconds: 15, // thời gian quay (giây) – càng lớn càng hồi hộp
+  extraTurns: 12, // số vòng quay thêm
 };
 
 // Thứ tự ô: bắt đầu từ trên cùng, theo chiều kim đồng hồ (đơn vị: nghìn đồng)
-const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "500K", 100, 200, 100, "1 triệu"];
+const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "Chuột KD", 100, 200, 100, 300];
 // Số  -> hiển thị thêm chữ K (150 -> "150K")
-// Chữ -> hiển thị đúng như viết ("500K", "1 triệu", "Loa")
 
 // Tỉ lệ trúng theo từng giải (%) – tổng nên bằng 100
 // Khóa phải trùng với giá trị trong PRIZES (số 50 -> 50, chữ "Loa" -> "Loa")
 // Giải có nhiều ô (như 50K) vẫn giữ đúng tỉ lệ này vì ô được chọn ngẫu nhiên trong cùng giải
 const RATES = {
-  50: 35,
-  100: 35,
-  150: 25,
-  200: 7,
-  "500K": 0,
-  "1 triệu": 0,
-  "Loa": 30
+  50: 15,
+  100: 25,
+  150: 15,
+  200: 10,
+  "Chuột KD": 15,
+  300: 0.01,
+  "Loa": 18
 };
 
 const COLORS = {
@@ -45,8 +44,8 @@ const COLORS = {
 // Màu riêng cho các giải đặc biệt (khóa trùng với giá trị trong PRIZES)
 // bg: màu ô | text: màu chữ trên ô | accent: màu số tiền trong popup
 const SPECIAL_COLORS = {
-  "1 triệu": { bg: "#e5282e", text: "#ffffff", accent: "#e5282e" }, // đỏ
-  "500K": { bg: "#f6c744", text: "#7a3e00", accent: "#d99a00" }, // vàng
+  300: { bg: "#e5282e", text: "#ffffff", accent: "#e5282e" }, // đỏ
+  "Chuột KD": { bg: "#f6c744", text: "#7a3e00", accent: "#d99a00" }, // vàng
   Loa: { bg: "#8a4be0", text: "#ffffff", accent: "#7a3bd0" }, // tím
 };
 
