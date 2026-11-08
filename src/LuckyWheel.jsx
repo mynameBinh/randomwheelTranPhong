@@ -219,6 +219,55 @@ const sfx = {
 };
 
 /* =====================================================
+   ÂM THANH TỪ FILE CỦA BẠN  ← TỰ THÊM Ở ĐÂY
+   Cách tốt nhất: bỏ file mp3 vào src/sounds/ rồi import (giống logo.png).
+   Lý do: file được đóng gói cùng web nên tải nhanh, chạy offline, không
+   dính lỗi CORS / link chết / bị chặn hotlink như URL ngoài.
+   Dùng URL ngoài vẫn được: dán thẳng chuỗi "https://.../quay.mp3" vào bên dưới.
+
+   Bước 1: bỏ comment 2 dòng import (đổi tên file cho đúng)
+   Bước 2: gán vào SOUNDS.spin / SOUNDS.win
+   Để chuỗi rỗng "" = không dùng, vẫn giữ tiếng tự tạo mặc định.
+   ===================================================== */
+import spinSound from "./nhac_xo_so2.mp3"; // file nằm cùng thư mục src/ với LuckyWheel.jsx
+import winSound from "./win.mp3"; // nhạc khi quay xong (file nằm cùng thư mục src/)
+
+const SOUNDS = {
+  spin: spinSound, // vd: spinSound  hoặc  "https://example.com/spin.mp3"  (phát khi bấm QUAY)
+  win: winSound, // phát khi quay xong (đặt "" để dùng chuông mặc định)
+  volume: 0.8, // 0 -> 1
+  loopSpin: true, // true: lặp lại tiếng quay cho đủ 15 giây; false: phát 1 lần
+  keepTick: false, // true: vẫn giữ tiếng "tạch" khi kim lướt qua ô (khi đã có SOUNDS.spin)
+};
+
+let spinAudio = null;
+let winAudio = null;
+const makeAudio = (src, loop) => {
+  if (!src) return null;
+  const a = new Audio(src);
+  a.preload = "auto";
+  a.loop = loop;
+  a.volume = SOUNDS.volume;
+  return a;
+};
+const loadSounds = () => {
+  if (!spinAudio) spinAudio = makeAudio(SOUNDS.spin, SOUNDS.loopSpin);
+  if (!winAudio) winAudio = makeAudio(SOUNDS.win, false);
+};
+const playFile = (a) => {
+  if (!a || muted) return false;
+  a.currentTime = 0;
+  a.play().catch((e) => console.warn("Không phát được âm thanh:", e));
+  return true;
+};
+const stopFile = (a) => {
+  if (a) {
+    a.pause();
+    a.currentTime = 0;
+  }
+};
+
+/* =====================================================
    PHÁO HOA (canvas phủ lên poster)
    Mỗi quả: bay lên (có tiếng rít) -> nổ (có tiếng nổ) -> tia sáng rơi xuống
    shot: số tăng dần mỗi lần muốn bắn | big: bắn nhiều hơn cho giải lớn
@@ -431,10 +480,15 @@ export default function LuckyWheel() {
 
   const toggleSound = () => {
     muted = soundOn; // đang bật -> tắt
+    if (muted) stopFile(spinAudio);
     setSoundOn(!soundOn);
   };
 
-  useEffect(() => () => cancelAnimationFrame(tickRaf.current), []);
+  useEffect(() => () => {
+    cancelAnimationFrame(tickRaf.current);
+    stopFile(spinAudio);
+    stopFile(winAudio);
+  }, []);
 
   // Đọc góc quay thực tế của vòng quay để phát tiếng "tạch" mỗi khi kim lướt qua một ô
   const startTicking = () => {
@@ -465,7 +519,9 @@ export default function LuckyWheel() {
     getAudio(); // mở khóa âm thanh (trình duyệt yêu cầu phải sau thao tác bấm)
     setBusy(true);
     setResult(null);
-    startTicking();
+    loadSounds();
+    playFile(spinAudio); // phát âm thanh khi bấm QUAY
+    if (!SOUNDS.spin || SOUNDS.keepTick) startTicking();
 
     const idx = pickIndex();
     const jitter = (Math.random() - 0.5) * (STEP * 0.7); // lệch nhẹ trong ô cho tự nhiên
@@ -478,11 +534,12 @@ export default function LuckyWheel() {
     setTimeout(() => {
       const value = PRIZES[idx];
       cancelAnimationFrame(tickRaf.current);
+      stopFile(spinAudio);
       setBusy(false);
       setResult(value);
       setBig(typeof value !== "number" || value >= 150); // giải đặc biệt hoặc từ 150K -> bắn nhiều hơn
       setShot((n) => n + 1); // bắn pháo hoa
-      sfx.win();
+      if (!playFile(winAudio)) sfx.win(); // có file thắng thì phát file, không thì chuông mặc định
       setHistory((h) => [value, ...h].slice(0, 4));
       // TODO: gọi API lưu kết quả ở đây, ví dụ fetch("/api/spin", {...})
     }, CONFIG.spinSeconds * 1000 + 100);
