@@ -24,9 +24,9 @@ const PRIZES = [150, 200, 50, "Loa", 150, 200, 50, "Chuột KD", 100, 200, 100, 
 // Giải có nhiều ô (như 50K) vẫn giữ đúng tỉ lệ này vì ô được chọn ngẫu nhiên trong cùng giải
 const RATES = {
   50: 15,
-  100: 25,
+  100: 27,
   150: 15,
-  200: 10,
+  200: 8,
   "Chuột KD": 15,
   300: 0.01,
   "Loa": 18
